@@ -30,6 +30,7 @@ namespace BannoyasGames.CargoExit.Presentation
         {
             Application.targetFrameRate = 60;
             Screen.orientation = ScreenOrientation.Portrait;
+            EnsureCamera();
             BuildInterface();
             CreatePrototypeParcels();
             ResetLevel();
@@ -443,6 +444,27 @@ namespace BannoyasGames.CargoExit.Presentation
                 typeof(EventSystem),
                 typeof(StandaloneInputModule));
         }
+
+        private void EnsureCamera()
+        {
+            if (Camera.main != null)
+            {
+                return;
+            }
+
+            var cameraObject = new GameObject(
+                "Main Camera",
+                typeof(Camera),
+                typeof(AudioListener));
+            cameraObject.tag = "MainCamera";
+            cameraObject.transform.SetParent(transform, false);
+            cameraObject.transform.localPosition = new Vector3(0f, 0f, -10f);
+
+            var gameCamera = cameraObject.GetComponent<Camera>();
+            gameCamera.clearFlags = CameraClearFlags.SolidColor;
+            gameCamera.backgroundColor = PrototypeUi.Hex("#FFF4D6");
+            gameCamera.orthographic = true;
+            gameCamera.orthographicSize = 5f;
+        }
     }
 }
-
