@@ -51,5 +51,24 @@ namespace BannoyasGames.CargoExit.PlayMode.Tests
             Object.Destroy(root);
             yield return null;
         }
+
+        [UnityTest]
+        public IEnumerator WarehouseSortPrototypeMatchesSketchStructure()
+        {
+            var root = new GameObject("Warehouse Sort Prototype Test");
+            root.AddComponent<WarehouseSortPrototypeController>();
+            yield return null;
+
+            Assert.That(GameObject.Find("Unsorted Boxes"), Is.Not.Null);
+            Assert.That(GameObject.Find("Pallet A"), Is.Not.Null);
+            Assert.That(GameObject.Find("Pallet G"), Is.Not.Null);
+            Assert.That(
+                Object.FindObjectsByType<WarehouseSortParcelView>(
+                    FindObjectsSortMode.None).Length,
+                Is.EqualTo(14));
+
+            Object.Destroy(root);
+            yield return null;
+        }
     }
 }

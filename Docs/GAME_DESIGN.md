@@ -18,6 +18,20 @@ El primer objetivo no es resolver un puzle, sino comprobar que repetir esta acci
 
 La pantalla debe usar objetivos grandes y el camión debe ocupar la mayor parte del área útil. Las reglas de orden, capacidad, fragilidad o herramientas se agregan solo después de validar el gesto.
 
+## Hipótesis de depósito periférico
+
+El boceto del producto define una pila de cajas desordenadas en el centro y pallets de destino alrededor. Durante la validación se usan letras grandes:
+
+- tres pallets en la parte superior;
+- dos pallets a la izquierda;
+- dos pallets a la derecha;
+- dos cajas por destino dentro de la pila central;
+- arrastre libre con atracción suave hacia el pallet correcto;
+- encastre automático al soltar sobre el destino;
+- retorno sin penalidad al soltar en un lugar incorrecto.
+
+Las letras A–G serán reemplazadas por destinos ilustrados cuando la distribución y la repetición estén validadas.
+
 La fantasía es convertirse en una persona experta en logística, no administrar una economía ni esperar temporizadores.
 
 ## Objetivos

@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/CargoExit/Scenes/PullSortPrototype.unity
-    guid: fe2b9b0cfc637e847961d53b98b8313c
+    path: Assets/CargoExit/Scenes/WarehouseSortPrototype.unity
+    guid: fc69409ab40eb3e4ba6b1e1c0d63a17a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
