@@ -1,0 +1,23 @@
+{
+  "name": "BannoyasGames.CargoExit.PlayMode.Tests",
+  "rootNamespace": "BannoyasGames.CargoExit.PlayMode.Tests",
+  "references": [
+    "BannoyasGames.CargoExit.Presentation",
+    "Unity.ugui"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
+

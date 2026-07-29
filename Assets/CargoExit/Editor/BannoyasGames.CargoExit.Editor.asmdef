@@ -1,0 +1,19 @@
+{
+  "name": "BannoyasGames.CargoExit.Editor",
+  "rootNamespace": "BannoyasGames.CargoExit.Editor",
+  "references": [
+    "BannoyasGames.CargoExit.Presentation"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
+
