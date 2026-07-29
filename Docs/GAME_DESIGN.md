@@ -4,6 +4,20 @@
 
 Cargo Exit es un puzle móvil de carga y reparto. El jugador debe acomodar paquetes dentro de una camioneta. Resolver el espacio es solo la primera mitad: al llegar a cada parada, el paquete correcto debe tener un camino libre hacia la puerta.
 
+> Hipótesis en prueba desde el 29 de julio de 2026: reemplazar el armado abstracto por un gesto continuo de descarga y clasificación. El jugador baja una caja por una salida central y, sin levantar el dedo, la acomoda en un pallet lateral. Esta hipótesis tiene prioridad sobre el diseño descrito debajo hasta completar una prueba de sensación táctil.
+
+## Prototipo de gesto
+
+El primer objetivo no es resolver un puzle, sino comprobar que repetir esta acción resulta agradable:
+
+1. Tocar una caja grande.
+2. Deslizarla hacia abajo.
+3. Sentir que la salida central la atrae suavemente.
+4. Doblar hacia el pallet lateral correcto.
+5. Verla encastrar con una animación corta y una respuesta clara.
+
+La pantalla debe usar objetivos grandes y el camión debe ocupar la mayor parte del área útil. Las reglas de orden, capacidad, fragilidad o herramientas se agregan solo después de validar el gesto.
+
 La fantasía es convertirse en una persona experta en logística, no administrar una economía ni esperar temporizadores.
 
 ## Objetivos
@@ -100,4 +114,3 @@ En una prueba con ocho personas:
 - el tiempo mediano de sesión supera ocho minutos;
 - al menos cuatro quieren otro capítulo;
 - los errores se atribuyen a decisiones propias, no a controles confusos.
-

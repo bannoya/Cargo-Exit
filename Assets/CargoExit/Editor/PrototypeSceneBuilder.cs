@@ -10,6 +10,7 @@ namespace BannoyasGames.CargoExit.Editor
     {
         private const string SceneFolder = "Assets/CargoExit/Scenes";
         private const string ScenePath = SceneFolder + "/Prototype.unity";
+        private const string PullSortScenePath = SceneFolder + "/PullSortPrototype.unity";
 
         [MenuItem("Cargo Exit/Rebuild Prototype Scene")]
         public static void Build()
@@ -31,6 +32,26 @@ namespace BannoyasGames.CargoExit.Editor
             AssetDatabase.SaveAssets();
             Debug.Log($"Cargo Exit prototype scene created at {ScenePath}");
         }
+
+        [MenuItem("Cargo Exit/Rebuild Pull Sort Scene")]
+        public static void BuildPullSort()
+        {
+            Directory.CreateDirectory(SceneFolder);
+            var scene = EditorSceneManager.NewScene(
+                NewSceneSetup.EmptyScene,
+                NewSceneMode.Single);
+
+            var root = new GameObject("Cargo Exit Pull Sort Prototype");
+            root.AddComponent<PullSortPrototypeController>();
+
+            EditorSceneManager.SaveScene(scene, PullSortScenePath);
+            EditorBuildSettings.scenes = new[]
+            {
+                new EditorBuildSettingsScene(PullSortScenePath, true)
+            };
+
+            AssetDatabase.SaveAssets();
+            Debug.Log($"Cargo Exit pull-sort scene created at {PullSortScenePath}");
+        }
     }
 }
-

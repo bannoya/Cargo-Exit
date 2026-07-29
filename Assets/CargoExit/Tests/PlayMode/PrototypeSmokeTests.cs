@@ -32,5 +32,24 @@ namespace BannoyasGames.CargoExit.PlayMode.Tests
             Object.Destroy(root);
             yield return null;
         }
+
+        [UnityTest]
+        public IEnumerator PullSortPrototypeCreatesLargeGestureTargets()
+        {
+            var root = new GameObject("Pull Sort Prototype Test");
+            root.AddComponent<PullSortPrototypeController>();
+            yield return null;
+
+            Assert.That(GameObject.Find("TruckInterior"), Is.Not.Null);
+            Assert.That(GameObject.Find("ExitGate"), Is.Not.Null);
+            Assert.That(GameObject.Find("Dock A"), Is.Not.Null);
+            Assert.That(GameObject.Find("Dock B"), Is.Not.Null);
+            Assert.That(
+                Object.FindObjectsByType<PullSortParcelView>(FindObjectsSortMode.None).Length,
+                Is.EqualTo(6));
+
+            Object.Destroy(root);
+            yield return null;
+        }
     }
 }
