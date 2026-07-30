@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BannoyasGames.CargoExit.Core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +12,8 @@ namespace BannoyasGames.CargoExit.Presentation
             Canvas canvas,
             RectTransform canvasRect,
             RectTransform pileSurface,
-            Text statusLabel,
-            Text comboLabel,
+            TMP_Text statusLabel,
+            TMP_Text comboLabel,
             Dictionary<CargoDestination, CargoPalletView> pallets)
         {
             Canvas = canvas;
@@ -29,9 +30,9 @@ namespace BannoyasGames.CargoExit.Presentation
 
         public RectTransform PileSurface { get; }
 
-        public Text StatusLabel { get; }
+        public TMP_Text StatusLabel { get; }
 
-        public Text ComboLabel { get; }
+        public TMP_Text ComboLabel { get; }
 
         public IReadOnlyDictionary<CargoDestination, CargoPalletView> Pallets { get; }
     }
@@ -42,7 +43,7 @@ namespace BannoyasGames.CargoExit.Presentation
             CargoDestination destination,
             RectTransform surface,
             Image background,
-            Text counter,
+            TMP_Text counter,
             Color color)
         {
             Destination = destination;
@@ -58,7 +59,7 @@ namespace BannoyasGames.CargoExit.Presentation
 
         public Image Background { get; }
 
-        public Text Counter { get; }
+        public TMP_Text Counter { get; }
 
         public Color Color { get; }
     }

@@ -1188,12 +1188,14 @@ Durante pruebas observaremos:
 - Unity 6000.3.20f1.
 - C#.
 - Android como objetivo principal.
-- Interfaz a 1080 × 1920 de referencia, adaptable.
+- Interfaz lógica a 540 × 960 de referencia, adaptable.
 - Orientación vertical.
 - Objetivo de 60 fps.
 - Progreso local.
-- Tipografía jugable de al menos 40 unidades en la resolución de referencia
+- Tipografía jugable de al menos 20 unidades en la resolución de referencia
   durante el prototipo.
+- Texto renderizado con TextMesh Pro y fuentes SDF; no se usa
+  `UnityEngine.UI.Text`.
 - Git en rama `main`.
 
 ### 25.2 Separación recomendada
@@ -1263,6 +1265,10 @@ La única escena activa es `Assets/CargoExit/Scenes/CargoExit.unity`. Contiene u
 vista previa visible desde el editor y se transforma en la versión interactiva
 al entrar en Play Mode. Los experimentos anteriores de cuadrícula y descarga
 fueron retirados después de cumplir su función de aprendizaje.
+
+La interfaz del prototipo fue reconstruida con TextMesh Pro después de validar
+que el texto heredado de Unity perdía nitidez al reducir la vista. La mecánica y
+las reglas de Core no dependen de esta decisión visual.
 
 Antes de generar una versión para dispositivo se debe instalar el módulo Android correspondiente a Unity. No se realizará ninguna publicación ni aceptación de términos sin confirmación.
 

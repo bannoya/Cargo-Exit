@@ -1,9 +1,9 @@
 using BannoyasGames.CargoExit.Presentation;
+using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace BannoyasGames.CargoExit.Editor
 {
@@ -36,12 +36,13 @@ namespace BannoyasGames.CargoExit.Editor
             }
 
             var updated = 0;
-            foreach (var label in controller.GetComponentsInChildren<Text>(true))
+            foreach (var label in controller.GetComponentsInChildren<TMP_Text>(true))
             {
                 var size = CargoExitTypography.RecommendedSize(label);
                 label.fontSize = size;
-                label.resizeTextForBestFit = false;
-                label.resizeTextMaxSize = size;
+                label.enableAutoSizing = false;
+                label.fontSizeMin = size;
+                label.fontSizeMax = size;
                 EnsureLabelHeight(label.rectTransform, size);
                 EditorUtility.SetDirty(label);
                 updated++;
@@ -55,7 +56,7 @@ namespace BannoyasGames.CargoExit.Editor
 
         private static void EnsureLabelHeight(
             RectTransform rectTransform,
-            int fontSize)
+            float fontSize)
         {
             var minimumHeight = Mathf.Ceil(fontSize * 1.25f);
             if (rectTransform.sizeDelta.y >= minimumHeight)

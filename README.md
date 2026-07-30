@@ -41,7 +41,8 @@ proyecto.
 ```text
 Assets/CargoExit/
 ├── Art/
-│   └── Fonts/
+│   ├── Fonts/
+│   └── TextMeshPro/
 ├── Scenes/
 └── Scripts/
     ├── Core/
@@ -64,12 +65,12 @@ Assets/CargoExit/
 La dirección de dependencias es `Core <- Presentation <- Editor`. Core nunca
 conoce la interfaz ni las herramientas de Unity.
 
-La interfaz usa **Atkinson Hyperlegible Next** en variantes Regular y Bold. Si
-alguna referencia de fuente se pierde, usar **Cargo Exit > Apply Project
-Fonts**: actualiza únicamente las fuentes y conserva el resto de la escena.
-Los tamaños se diseñan para un Canvas móvil de `1080 × 1920`, con un mínimo
-provisional de 40 unidades. **Cargo Exit > Apply Project Typography** restaura
-esa escala si un texto queda demasiado pequeño.
+La interfaz usa **Atkinson Hyperlegible Next** en variantes Regular y Bold
+convertidas a SDF de TextMesh Pro. Si alguna referencia se pierde, usar **Cargo
+Exit > Apply Project Fonts**: actualiza únicamente las fuentes y conserva el
+resto de la escena. Los tamaños se diseñan para un Canvas móvil lógico de `540
+× 960`, con un mínimo provisional de 20 unidades. **Cargo Exit > Apply Project
+Typography** restaura esa escala si un texto queda demasiado pequeño.
 
 ## Tecnología
 

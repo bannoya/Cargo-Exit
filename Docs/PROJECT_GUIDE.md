@@ -25,18 +25,19 @@ Project Fonts**. Esta herramienta cambia únicamente las referencias
 tipográficas de la escena y conserva posiciones, tamaños, colores y demás
 ajustes manuales.
 
-La interfaz usa una referencia de `1080 × 1920`. En una ventana Game pequeña,
-Unity reduce toda la composición: un texto de 22 unidades puede terminar
-ocupando apenas 5 o 6 píxeles visibles. Por eso ningún texto jugable del
-prototipo baja de 40 unidades. Usar **Cargo Exit > Apply Project Typography**
-para restaurar la escala tipográfica sin reconstruir paneles ni contenido.
+La interfaz usa una referencia lógica de `540 × 960`, coordenadas enteras,
+Canvas alineado a píxeles y texto SDF mediante TextMesh Pro. Ningún texto
+jugable del prototipo baja de 20 unidades. Usar **Cargo Exit > Apply Project
+Typography** para restaurar la escala sin reconstruir paneles ni contenido.
+No se vuelve a usar el componente heredado `UnityEngine.UI.Text`.
 
 ## Estructura física
 
 ```text
 Assets/CargoExit/
 ├── Art/
-│   └── Fonts/
+│   ├── Fonts/
+│   └── TextMeshPro/
 ├── Scenes/
 └── Scripts/
     ├── Core/
@@ -106,7 +107,8 @@ Nunca se referencia desde Core o desde el juego ejecutable.
 
 - **EditMode:** prueban reglas de Core sin abrir escenas.
 - **PlayMode:** prueban que la escena principal se abra y cree la interfaz
-  jugable.
+  jugable, que use exclusivamente TextMesh Pro y que mantenga la escala
+  tipográfica mínima.
 
 Cuando aparezca un bug, primero se identifica la capa:
 
@@ -134,3 +136,4 @@ No se agregan sistemas futuros “por si acaso”.
 - Trabajo técnico: este documento
 - Escena vigente: `Assets/CargoExit/Scenes/CargoExit.unity`
 - Fuente de interfaz: `Assets/CargoExit/Art/Fonts/AtkinsonHyperlegibleNext`
+- Recursos SDF: `Assets/CargoExit/Art/TextMeshPro`

@@ -3,7 +3,8 @@
   "rootNamespace": "BannoyasGames.CargoExit.PlayMode.Tests",
   "references": [
     "BannoyasGames.CargoExit.Presentation",
-    "Unity.ugui"
+    "Unity.ugui",
+    "Unity.TextMeshPro"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
@@ -20,4 +21,3 @@
     "TestAssemblies"
   ]
 }
-

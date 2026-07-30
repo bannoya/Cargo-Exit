@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BannoyasGames.CargoExit.Core;
+using TMPro;
 using UnityEngine;
 
 namespace BannoyasGames.CargoExit.Presentation
 {
     public sealed class CargoExitPrototypeController : MonoBehaviour
     {
-        [SerializeField] private Font regularFont;
-        [SerializeField] private Font boldFont;
+        [SerializeField] private TMP_FontAsset regularFont;
+        [SerializeField] private TMP_FontAsset boldFont;
 
         private readonly List<CargoParcelView> boxes = new();
         private CargoExitPrototypeView view;
@@ -46,7 +47,9 @@ namespace BannoyasGames.CargoExit.Presentation
             StartRound();
         }
 
-        public void ConfigureFonts(Font regular, Font bold)
+        public void ConfigureFonts(
+            TMP_FontAsset regular,
+            TMP_FontAsset bold)
         {
             regularFont = regular;
             boldFont = bold;
@@ -68,9 +71,9 @@ namespace BannoyasGames.CargoExit.Presentation
                 targetPallet.Surface.position);
             var distance = Vector2.Distance(local, palletCenter);
 
-            if (distance < 270f)
+            if (distance < 135f)
             {
-                var attraction = 1f - Mathf.Clamp01(distance / 270f);
+                var attraction = 1f - Mathf.Clamp01(distance / 135f);
                 attraction = attraction * attraction * 0.38f;
                 local = Vector2.Lerp(local, palletCenter, attraction);
             }
@@ -182,20 +185,20 @@ namespace BannoyasGames.CargoExit.Presentation
 
             var positions = new[]
             {
-                new Vector2(-88f, 342f),
-                new Vector2(90f, 292f),
-                new Vector2(-105f, 235f),
-                new Vector2(96f, 178f),
-                new Vector2(-76f, 120f),
-                new Vector2(84f, 62f),
-                new Vector2(-100f, 4f),
-                new Vector2(102f, -55f),
-                new Vector2(-82f, -114f),
-                new Vector2(88f, -173f),
-                new Vector2(-103f, -232f),
-                new Vector2(96f, -290f),
-                new Vector2(-72f, -342f),
-                new Vector2(76f, -365f)
+                new Vector2(-44f, 155f),
+                new Vector2(45f, 130f),
+                new Vector2(-52f, 105f),
+                new Vector2(48f, 80f),
+                new Vector2(-38f, 55f),
+                new Vector2(42f, 30f),
+                new Vector2(-50f, 5f),
+                new Vector2(51f, -20f),
+                new Vector2(-41f, -45f),
+                new Vector2(44f, -70f),
+                new Vector2(-51f, -95f),
+                new Vector2(48f, -120f),
+                new Vector2(-36f, -145f),
+                new Vector2(38f, -170f)
             };
             var rotations = new[]
             {
@@ -274,7 +277,7 @@ namespace BannoyasGames.CargoExit.Presentation
             box.SetInteraction(false);
             var startPosition = box.RectTransform.position;
             var startScale = box.RectTransform.localScale;
-            var slot = new Vector2(slotIndex == 0 ? -58f : 58f, -5f);
+            var slot = new Vector2(slotIndex == 0 ? -29f : 29f, -3f);
             var targetPosition = pallet.Surface.TransformPoint(slot);
 
             const float duration = 0.23f;

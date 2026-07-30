@@ -3,7 +3,8 @@
   "rootNamespace": "BannoyasGames.CargoExit.Presentation",
   "references": [
     "BannoyasGames.CargoExit.Core",
-    "Unity.ugui"
+    "Unity.ugui",
+    "Unity.TextMeshPro"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
@@ -15,4 +16,3 @@
   "versionDefines": [],
   "noEngineReferences": false
 }
-

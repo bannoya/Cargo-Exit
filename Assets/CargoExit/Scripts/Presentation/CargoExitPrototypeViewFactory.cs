@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BannoyasGames.CargoExit.Core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -32,11 +33,12 @@ namespace BannoyasGames.CargoExit.Presentation
 
             var canvas = root.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.pixelPerfect = true;
             var canvasRect = root.GetComponent<RectTransform>();
 
             var scaler = root.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1080f, 1920f);
+            scaler.referenceResolution = new Vector2(540f, 960f);
             scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
             scaler.matchWidthOrHeight = 0.5f;
 
@@ -44,7 +46,7 @@ namespace BannoyasGames.CargoExit.Presentation
                 root.transform,
                 "Background",
                 UiElementFactory.Hex("#FFF4D6"),
-                new Vector2(1080f, 1920f),
+                new Vector2(540f, 960f),
                 Vector2.zero);
             background.anchorMin = Vector2.zero;
             background.anchorMax = Vector2.one;
@@ -56,10 +58,10 @@ namespace BannoyasGames.CargoExit.Presentation
                 "BANNOYA'S GAMES",
                 CargoExitTypography.Brand,
                 UiElementFactory.Hex("#6B7280"),
-                TextAnchor.MiddleCenter,
-                new Vector2(700f, 48f),
-                new Vector2(0f, 887f),
-                FontStyle.Bold);
+                TextAlignmentOptions.Center,
+                new Vector2(350f, 30f),
+                new Vector2(0f, 443f),
+                FontStyles.Bold);
 
             UiElementFactory.Label(
                 root.transform,
@@ -67,10 +69,10 @@ namespace BannoyasGames.CargoExit.Presentation
                 "ORDENÁ EL DEPÓSITO",
                 CargoExitTypography.Title,
                 UiElementFactory.Hex("#172238"),
-                TextAnchor.MiddleCenter,
-                new Vector2(930f, 82f),
-                new Vector2(0f, 824f),
-                FontStyle.Bold);
+                TextAlignmentOptions.Center,
+                new Vector2(480f, 46f),
+                new Vector2(0f, 410f),
+                FontStyles.Bold);
 
             var statusLabel = UiElementFactory.Label(
                 root.transform,
@@ -78,10 +80,10 @@ namespace BannoyasGames.CargoExit.Presentation
                 string.Empty,
                 CargoExitTypography.Status,
                 UiElementFactory.Hex("#374151"),
-                TextAnchor.MiddleCenter,
-                new Vector2(860f, 66f),
-                new Vector2(-40f, 762f),
-                FontStyle.Bold);
+                TextAlignmentOptions.Center,
+                new Vector2(390f, 36f),
+                new Vector2(-20f, 373f),
+                FontStyles.Bold);
 
             var comboLabel = UiElementFactory.Label(
                 root.transform,
@@ -89,56 +91,56 @@ namespace BannoyasGames.CargoExit.Presentation
                 string.Empty,
                 CargoExitTypography.Combo,
                 UiElementFactory.Hex("#D97706"),
-                TextAnchor.MiddleRight,
-                new Vector2(260f, 60f),
-                new Vector2(365f, 762f),
-                FontStyle.Bold);
+                TextAlignmentOptions.Right,
+                new Vector2(130f, 32f),
+                new Vector2(182f, 373f),
+                FontStyles.Bold);
 
             var pallets = new Dictionary<CargoDestination, CargoPalletView>
             {
                 [CargoDestination.A] = CreatePallet(
                     canvas.transform,
                     CargoDestination.A,
-                    new Vector2(-320f, 620f),
-                    new Vector2(280f, 190f)),
+                    new Vector2(-160f, 305f),
+                    new Vector2(140f, 95f)),
                 [CargoDestination.B] = CreatePallet(
                     canvas.transform,
                     CargoDestination.B,
-                    new Vector2(0f, 620f),
-                    new Vector2(280f, 190f)),
+                    new Vector2(0f, 305f),
+                    new Vector2(140f, 95f)),
                 [CargoDestination.C] = CreatePallet(
                     canvas.transform,
                     CargoDestination.C,
-                    new Vector2(320f, 620f),
-                    new Vector2(280f, 190f)),
+                    new Vector2(160f, 305f),
+                    new Vector2(140f, 95f)),
                 [CargoDestination.D] = CreatePallet(
                     canvas.transform,
                     CargoDestination.D,
-                    new Vector2(-400f, 250f),
-                    new Vector2(250f, 310f)),
+                    new Vector2(-205f, 120f),
+                    new Vector2(125f, 155f)),
                 [CargoDestination.E] = CreatePallet(
                     canvas.transform,
                     CargoDestination.E,
-                    new Vector2(-400f, -145f),
-                    new Vector2(250f, 310f)),
+                    new Vector2(-205f, -75f),
+                    new Vector2(125f, 155f)),
                 [CargoDestination.F] = CreatePallet(
                     canvas.transform,
                     CargoDestination.F,
-                    new Vector2(400f, 250f),
-                    new Vector2(250f, 310f)),
+                    new Vector2(205f, 120f),
+                    new Vector2(125f, 155f)),
                 [CargoDestination.G] = CreatePallet(
                     canvas.transform,
                     CargoDestination.G,
-                    new Vector2(400f, -145f),
-                    new Vector2(250f, 310f))
+                    new Vector2(205f, -75f),
+                    new Vector2(125f, 155f))
             };
 
             var pileSurface = UiElementFactory.Panel(
                 root.transform,
                 "Unsorted Boxes",
                 new Color(1f, 1f, 1f, 0.48f),
-                new Vector2(465f, 955f),
-                new Vector2(0f, 70f));
+                new Vector2(230f, 480f),
+                new Vector2(0f, 35f));
 
             UiElementFactory.Label(
                 pileSurface,
@@ -146,10 +148,10 @@ namespace BannoyasGames.CargoExit.Presentation
                 "CAJAS DESORDENADAS",
                 CargoExitTypography.PileTitle,
                 UiElementFactory.Hex("#6B7280"),
-                TextAnchor.UpperCenter,
-                new Vector2(430f, 60f),
-                new Vector2(0f, 432f),
-                FontStyle.Bold);
+                TextAlignmentOptions.Top,
+                new Vector2(215f, 36f),
+                new Vector2(0f, 214f),
+                FontStyles.Bold);
 
             UiElementFactory.Label(
                 root.transform,
@@ -157,9 +159,9 @@ namespace BannoyasGames.CargoExit.Presentation
                 "Arrastrá cada caja al pallet con la misma letra",
                 CargoExitTypography.Hint,
                 UiElementFactory.Hex("#6B7280"),
-                TextAnchor.MiddleCenter,
-                new Vector2(900f, 70f),
-                new Vector2(0f, -790f));
+                TextAlignmentOptions.Center,
+                new Vector2(490f, 50f),
+                new Vector2(0f, -415f));
 
             EnsureEventSystem(owner);
             return new CargoExitPrototypeView(
@@ -178,8 +180,10 @@ namespace BannoyasGames.CargoExit.Presentation
             var interfaceTransform = owner.Find(InterfaceName);
             var canvas = interfaceTransform?.GetComponent<Canvas>();
             var canvasRect = interfaceTransform?.GetComponent<RectTransform>();
-            var statusLabel = interfaceTransform?.Find("Status")?.GetComponent<Text>();
-            var comboLabel = interfaceTransform?.Find("Combo")?.GetComponent<Text>();
+            var statusLabel =
+                interfaceTransform?.Find("Status")?.GetComponent<TMP_Text>();
+            var comboLabel =
+                interfaceTransform?.Find("Combo")?.GetComponent<TMP_Text>();
             var pileSurface =
                 interfaceTransform?.Find("Unsorted Boxes") as RectTransform;
 
@@ -198,7 +202,7 @@ namespace BannoyasGames.CargoExit.Presentation
             {
                 var surface =
                     interfaceTransform.Find($"Pallet {destination}") as RectTransform;
-                var counter = surface?.Find("Counter")?.GetComponent<Text>();
+                var counter = surface?.Find("Counter")?.GetComponent<TMP_Text>();
                 var background = surface?.GetComponent<Image>();
                 if (surface == null || counter == null || background == null)
                 {
@@ -286,10 +290,10 @@ namespace BannoyasGames.CargoExit.Presentation
                 destination.ToString(),
                 CargoExitTypography.PalletLetter,
                 UiElementFactory.Hex("#172238"),
-                TextAnchor.MiddleCenter,
-                new Vector2(150f, 100f),
-                new Vector2(0f, 18f),
-                FontStyle.Bold);
+                TextAlignmentOptions.Center,
+                new Vector2(75f, 55f),
+                new Vector2(0f, 10f),
+                FontStyles.Bold);
 
             var counter = UiElementFactory.Label(
                 surface,
@@ -297,10 +301,10 @@ namespace BannoyasGames.CargoExit.Presentation
                 "0 / 2",
                 CargoExitTypography.PalletCounter,
                 UiElementFactory.Hex("#6B7280"),
-                TextAnchor.LowerCenter,
-                new Vector2(180f, 46f),
-                new Vector2(0f, -size.y * 0.5f + 30f),
-                FontStyle.Bold);
+                TextAlignmentOptions.Bottom,
+                new Vector2(90f, 30f),
+                new Vector2(0f, -size.y * 0.5f + 15f),
+                FontStyles.Bold);
 
             return new CargoPalletView(
                 destination,

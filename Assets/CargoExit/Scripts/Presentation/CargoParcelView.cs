@@ -1,4 +1,5 @@
 using BannoyasGames.CargoExit.Core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -45,7 +46,7 @@ namespace BannoyasGames.CargoExit.Presentation
             rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
             rectTransform.pivot = new Vector2(0.5f, 0.5f);
-            rectTransform.sizeDelta = new Vector2(190f, 138f);
+            rectTransform.sizeDelta = new Vector2(95f, 69f);
             rectTransform.anchoredPosition = position;
             rectTransform.localEulerAngles = new Vector3(0f, 0f, rotation);
 
@@ -61,16 +62,16 @@ namespace BannoyasGames.CargoExit.Presentation
                 rectTransform,
                 "Tape Top",
                 new Color(1f, 1f, 1f, 0.24f),
-                new Vector2(190f, 8f),
-                new Vector2(0f, 47f));
+                new Vector2(95f, 4f),
+                new Vector2(0f, 24f));
             upperTape.GetComponent<Image>().raycastTarget = false;
 
             var lowerTape = UiElementFactory.Panel(
                 rectTransform,
                 "Tape Bottom",
                 new Color(0f, 0f, 0f, 0.09f),
-                new Vector2(190f, 7f),
-                new Vector2(0f, -47f));
+                new Vector2(95f, 4f),
+                new Vector2(0f, -24f));
             lowerTape.GetComponent<Image>().raycastTarget = false;
 
             var label = UiElementFactory.Label(
@@ -79,10 +80,10 @@ namespace BannoyasGames.CargoExit.Presentation
                 destination.ToString(),
                 CargoExitTypography.ParcelLetter,
                 UiElementFactory.Hex("#172238"),
-                TextAnchor.MiddleCenter,
+                TextAlignmentOptions.Center,
                 rectTransform.sizeDelta,
                 Vector2.zero,
-                FontStyle.Bold);
+                FontStyles.Bold);
             label.raycastTarget = false;
         }
 

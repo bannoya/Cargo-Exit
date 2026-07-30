@@ -1,22 +1,22 @@
-using UnityEngine.UI;
+using TMPro;
 
 namespace BannoyasGames.CargoExit.Presentation
 {
     public static class CargoExitTypography
     {
-        public const int MinimumReadable = 40;
-        public const int Brand = 40;
-        public const int Title = 64;
-        public const int Status = 44;
-        public const int Combo = 40;
-        public const int PileTitle = 40;
-        public const int Hint = 42;
-        public const int PalletLetter = 66;
-        public const int PalletCounter = 40;
-        public const int ParcelLetter = 70;
-        public const int Button = 48;
+        public const float MinimumReadable = 20f;
+        public const float Brand = 20f;
+        public const float Title = 32f;
+        public const float Status = 22f;
+        public const float Combo = 20f;
+        public const float PileTitle = 20f;
+        public const float Hint = 20f;
+        public const float PalletLetter = 34f;
+        public const float PalletCounter = 20f;
+        public const float ParcelLetter = 36f;
+        public const float Button = 24f;
 
-        public static int RecommendedSize(Text label)
+        public static float RecommendedSize(TMP_Text label)
         {
             return label.name switch
             {

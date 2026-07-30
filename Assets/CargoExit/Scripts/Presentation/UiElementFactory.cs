@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -6,11 +7,12 @@ namespace BannoyasGames.CargoExit.Presentation
 {
     internal static class UiElementFactory
     {
-        private static Font regularFont;
-        private static Font boldFont;
-        private static Font fallbackFont;
+        private static TMP_FontAsset regularFont;
+        private static TMP_FontAsset boldFont;
 
-        public static void ConfigureFonts(Font regular, Font bold)
+        public static void ConfigureFonts(
+            TMP_FontAsset regular,
+            TMP_FontAsset bold)
         {
             regularFont = regular;
             boldFont = bold;
@@ -35,18 +37,21 @@ namespace BannoyasGames.CargoExit.Presentation
             return rect;
         }
 
-        public static Text Label(
+        public static TextMeshProUGUI Label(
             Transform parent,
             string name,
             string content,
-            int fontSize,
+            float fontSize,
             Color color,
-            TextAnchor alignment,
+            TextAlignmentOptions alignment,
             Vector2 size,
             Vector2 anchoredPosition,
-            FontStyle style = FontStyle.Normal)
+            FontStyles style = FontStyles.Normal)
         {
-            var gameObject = new GameObject(name, typeof(RectTransform), typeof(Text));
+            var gameObject = new GameObject(
+                name,
+                typeof(RectTransform),
+                typeof(TextMeshProUGUI));
             var rect = gameObject.GetComponent<RectTransform>();
             rect.SetParent(parent, false);
             rect.anchorMin = new Vector2(0.5f, 0.5f);
@@ -54,15 +59,16 @@ namespace BannoyasGames.CargoExit.Presentation
             rect.sizeDelta = size;
             rect.anchoredPosition = anchoredPosition;
 
-            var text = gameObject.GetComponent<Text>();
+            var text = gameObject.GetComponent<TextMeshProUGUI>();
             text.font = FontFor(style);
             text.fontSize = fontSize;
             text.fontStyle = StyleFor(style);
             text.alignment = alignment;
             text.color = color;
             text.text = content;
-            text.horizontalOverflow = HorizontalWrapMode.Wrap;
-            text.verticalOverflow = VerticalWrapMode.Truncate;
+            text.textWrappingMode = TextWrappingModes.Normal;
+            text.overflowMode = TextOverflowModes.Truncate;
+            text.extraPadding = true;
             return text;
         }
 
@@ -92,10 +98,10 @@ namespace BannoyasGames.CargoExit.Presentation
                 caption,
                 CargoExitTypography.Button,
                 foreground,
-                TextAnchor.MiddleCenter,
+                TextAlignmentOptions.Center,
                 size,
                 Vector2.zero,
-                FontStyle.Bold);
+                FontStyles.Bold);
             label.raycastTarget = false;
             return button;
         }
@@ -107,44 +113,25 @@ namespace BannoyasGames.CargoExit.Presentation
                 : Color.magenta;
         }
 
-        private static Font FontFor(FontStyle style)
+        private static TMP_FontAsset FontFor(FontStyles style)
         {
-            if ((style == FontStyle.Bold || style == FontStyle.BoldAndItalic) &&
+            if ((style & FontStyles.Bold) != 0 &&
                 boldFont != null)
             {
                 return boldFont;
             }
 
-            return regularFont != null ? regularFont : FallbackFont;
+            return regularFont;
         }
 
-        private static FontStyle StyleFor(FontStyle style)
+        private static FontStyles StyleFor(FontStyles style)
         {
             if (boldFont == null)
             {
                 return style;
             }
 
-            return style switch
-            {
-                FontStyle.Bold => FontStyle.Normal,
-                FontStyle.BoldAndItalic => FontStyle.Italic,
-                _ => style
-            };
-        }
-
-        private static Font FallbackFont
-        {
-            get
-            {
-                if (fallbackFont == null)
-                {
-                    fallbackFont =
-                        Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-                }
-
-                return fallbackFont;
-            }
+            return style & ~FontStyles.Bold;
         }
     }
 }
