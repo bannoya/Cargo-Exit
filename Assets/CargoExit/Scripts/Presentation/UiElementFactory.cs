@@ -90,7 +90,7 @@ namespace BannoyasGames.CargoExit.Presentation
                 rect,
                 "Label",
                 caption,
-                38,
+                CargoExitTypography.Button,
                 foreground,
                 TextAnchor.MiddleCenter,
                 size,

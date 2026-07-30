@@ -45,6 +45,11 @@ namespace BannoyasGames.CargoExit.PlayMode.Tests
                     "Atkinson",
                     label.font.name,
                     $"{label.name} is not using the project font.");
+                Assert.That(
+                    label.fontSize,
+                    Is.GreaterThanOrEqualTo(
+                        CargoExitTypography.MinimumReadable),
+                    $"{label.name} is too small for the mobile canvas.");
             }
 
             Assert.That(Camera.main, Is.Not.Null);

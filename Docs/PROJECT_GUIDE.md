@@ -25,6 +25,12 @@ Project Fonts**. Esta herramienta cambia únicamente las referencias
 tipográficas de la escena y conserva posiciones, tamaños, colores y demás
 ajustes manuales.
 
+La interfaz usa una referencia de `1080 × 1920`. En una ventana Game pequeña,
+Unity reduce toda la composición: un texto de 22 unidades puede terminar
+ocupando apenas 5 o 6 píxeles visibles. Por eso ningún texto jugable del
+prototipo baja de 40 unidades. Usar **Cargo Exit > Apply Project Typography**
+para restaurar la escala tipográfica sin reconstruir paneles ni contenido.
+
 ## Estructura física
 
 ```text

@@ -1192,6 +1192,8 @@ Durante pruebas observaremos:
 - Orientación vertical.
 - Objetivo de 60 fps.
 - Progreso local.
+- Tipografía jugable de al menos 40 unidades en la resolución de referencia
+  durante el prototipo.
 - Git en rama `main`.
 
 ### 25.2 Separación recomendada

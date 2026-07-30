@@ -77,7 +77,7 @@ namespace BannoyasGames.CargoExit.Presentation
                 rectTransform,
                 "Letter",
                 destination.ToString(),
-                70,
+                CargoExitTypography.ParcelLetter,
                 UiElementFactory.Hex("#172238"),
                 TextAnchor.MiddleCenter,
                 rectTransform.sizeDelta,
