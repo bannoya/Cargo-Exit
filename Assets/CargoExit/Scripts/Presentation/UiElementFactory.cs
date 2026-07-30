@@ -6,7 +6,15 @@ namespace BannoyasGames.CargoExit.Presentation
 {
     internal static class UiElementFactory
     {
-        private static Font font;
+        private static Font regularFont;
+        private static Font boldFont;
+        private static Font fallbackFont;
+
+        public static void ConfigureFonts(Font regular, Font bold)
+        {
+            regularFont = regular;
+            boldFont = bold;
+        }
 
         public static RectTransform Panel(
             Transform parent,
@@ -47,9 +55,9 @@ namespace BannoyasGames.CargoExit.Presentation
             rect.anchoredPosition = anchoredPosition;
 
             var text = gameObject.GetComponent<Text>();
-            text.font = Font;
+            text.font = FontFor(style);
             text.fontSize = fontSize;
-            text.fontStyle = style;
+            text.fontStyle = StyleFor(style);
             text.alignment = alignment;
             text.color = color;
             text.text = content;
@@ -99,16 +107,43 @@ namespace BannoyasGames.CargoExit.Presentation
                 : Color.magenta;
         }
 
-        private static Font Font
+        private static Font FontFor(FontStyle style)
+        {
+            if ((style == FontStyle.Bold || style == FontStyle.BoldAndItalic) &&
+                boldFont != null)
+            {
+                return boldFont;
+            }
+
+            return regularFont != null ? regularFont : FallbackFont;
+        }
+
+        private static FontStyle StyleFor(FontStyle style)
+        {
+            if (boldFont == null)
+            {
+                return style;
+            }
+
+            return style switch
+            {
+                FontStyle.Bold => FontStyle.Normal,
+                FontStyle.BoldAndItalic => FontStyle.Italic,
+                _ => style
+            };
+        }
+
+        private static Font FallbackFont
         {
             get
             {
-                if (font == null)
+                if (fallbackFont == null)
                 {
-                    font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                    fallbackFont =
+                        Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
                 }
 
-                return font;
+                return fallbackFont;
             }
         }
     }

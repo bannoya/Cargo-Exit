@@ -8,6 +8,9 @@ namespace BannoyasGames.CargoExit.Presentation
 {
     public sealed class CargoExitPrototypeController : MonoBehaviour
     {
+        [SerializeField] private Font regularFont;
+        [SerializeField] private Font boldFont;
+
         private readonly List<CargoParcelView> boxes = new();
         private CargoExitPrototypeView view;
         private CargoSortSession session;
@@ -20,6 +23,7 @@ namespace BannoyasGames.CargoExit.Presentation
         {
             Application.targetFrameRate = 60;
             Screen.orientation = ScreenOrientation.Portrait;
+            UiElementFactory.ConfigureFonts(regularFont, boldFont);
             CargoExitPrototypeViewFactory.EnsureCamera(transform);
 
             if (CargoExitPrototypeViewFactory.TryBind(transform, out view))
@@ -36,9 +40,17 @@ namespace BannoyasGames.CargoExit.Presentation
 
         public void BuildScenePreview()
         {
+            UiElementFactory.ConfigureFonts(regularFont, boldFont);
             CargoExitPrototypeViewFactory.EnsureCamera(transform);
             view = CargoExitPrototypeViewFactory.Create(transform);
             StartRound();
+        }
+
+        public void ConfigureFonts(Font regular, Font bold)
+        {
+            regularFont = regular;
+            boldFont = bold;
+            UiElementFactory.ConfigureFonts(regularFont, boldFont);
         }
 
         public void BeginSort(CargoParcelView box)

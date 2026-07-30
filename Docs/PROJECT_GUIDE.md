@@ -20,6 +20,36 @@ Si la escena se borró o quedó dañada, usar **Cargo Exit > Rebuild Main Scene*
 Esa opción reemplaza la escena, por lo que sólo debe usarse cuando realmente se
 quiera reconstruir la vista desde el código de autoría.
 
+Si sólo falta una fuente o algún texto se ve mal, usar **Cargo Exit > Apply
+Project Fonts**. Esta herramienta cambia únicamente las referencias
+tipográficas de la escena y conserva posiciones, tamaños, colores y demás
+ajustes manuales.
+
+## Estructura física
+
+```text
+Assets/CargoExit/
+├── Art/
+│   └── Fonts/
+├── Scenes/
+└── Scripts/
+    ├── Core/
+    ├── Presentation/
+    ├── Editor/
+    └── Tests/
+        ├── EditMode/
+        └── PlayMode/
+```
+
+Esta es la convención estable del proyecto:
+
+- los recursos visuales viven en `Art`;
+- las escenas viven en `Scenes`;
+- todo el código vive en `Scripts`;
+- cada responsabilidad mantiene su carpeta y su módulo independiente;
+- una carpeta nueva se crea cuando contiene una responsabilidad o un recurso
+  real, no para anticipar sistemas futuros.
+
 ## Capas y dependencias
 
 ```text
@@ -61,6 +91,7 @@ Contiene herramientas que sólo existen dentro de Unity:
 
 - abrir la escena principal;
 - reconstruir la escena visible;
+- reparar las referencias de las fuentes;
 - preparar la lista de escenas de compilación.
 
 Nunca se referencia desde Core o desde el juego ejecutable.
@@ -96,3 +127,4 @@ No se agregan sistemas futuros “por si acaso”.
 - Marca: `Docs/BRAND.md`
 - Trabajo técnico: este documento
 - Escena vigente: `Assets/CargoExit/Scenes/CargoExit.unity`
+- Fuente de interfaz: `Assets/CargoExit/Art/Fonts/AtkinsonHyperlegibleNext`

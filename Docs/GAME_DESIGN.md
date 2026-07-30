@@ -1214,6 +1214,15 @@ La separación es una regla del proyecto, no una sugerencia:
 4. **Tests EditMode** comprueban Core sin levantar una escena.
 5. **Tests PlayMode** comprueban la integración visual y táctil.
 
+#### Convención física del proyecto
+
+Los recursos del juego se agrupan dentro de `Assets/CargoExit`: el contenido
+visual en `Art`, las escenas en `Scenes` y todo el código en `Scripts`. Dentro
+de `Scripts`, Core, Presentation, Editor y Tests conservan carpetas y
+definiciones de ensamblado separadas. Esta organización puede crecer con
+Application o Content cuando exista una necesidad concreta, pero no se
+adelantan sistemas vacíos.
+
 Core nunca depende de Presentation o Editor. La lógica de una jornada no se
 concentrará en un único controlador: reglas, flujo, vista, entrada y herramientas
 de autoría se mantendrán como responsabilidades distintas. Si aparece un error,

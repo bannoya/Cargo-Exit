@@ -32,6 +32,21 @@ namespace BannoyasGames.CargoExit.PlayMode.Tests
             Assert.That(
                 GameObject.Find("Pallet A").GetComponent<Image>(),
                 Is.Not.Null);
+            var labels = Object.FindObjectsByType<Text>(
+                FindObjectsSortMode.None);
+            Assert.That(labels, Is.Not.Empty);
+            foreach (var label in labels)
+            {
+                Assert.That(
+                    label.font,
+                    Is.Not.Null,
+                    $"{label.name} has no readable font assigned.");
+                StringAssert.Contains(
+                    "Atkinson",
+                    label.font.name,
+                    $"{label.name} is not using the project font.");
+            }
+
             Assert.That(Camera.main, Is.Not.Null);
         }
     }

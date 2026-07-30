@@ -38,16 +38,35 @@ proyecto.
 
 ## Estructura
 
-- `Core`: reglas C# independientes de Unity.
-- `Presentation`: vista, entrada, animaciones y coordinación del prototipo.
-- `Editor`: herramientas para crear y abrir escenas; no entra al juego final.
-- `Tests/EditMode`: pruebas rápidas de reglas.
-- `Tests/PlayMode`: pruebas de la escena y la interacción.
+```text
+Assets/CargoExit/
+├── Art/
+│   └── Fonts/
+├── Scenes/
+└── Scripts/
+    ├── Core/
+    ├── Presentation/
+    ├── Editor/
+    └── Tests/
+        ├── EditMode/
+        └── PlayMode/
+```
+
+- `Art`: fuentes, imágenes, materiales, modelos y demás recursos visuales.
 - `Scenes`: una sola escena vigente.
+- `Scripts/Core`: reglas C# independientes de Unity.
+- `Scripts/Presentation`: vista, entrada, animaciones y coordinación.
+- `Scripts/Editor`: herramientas de autoría; no entra al juego final.
+- `Scripts/Tests/EditMode`: pruebas rápidas de reglas.
+- `Scripts/Tests/PlayMode`: pruebas de la escena y la interacción.
 - `Docs`: GDD, identidad y guía de trabajo.
 
 La dirección de dependencias es `Core <- Presentation <- Editor`. Core nunca
 conoce la interfaz ni las herramientas de Unity.
+
+La interfaz usa **Atkinson Hyperlegible Next** en variantes Regular y Bold. Si
+alguna referencia de fuente se pierde, usar **Cargo Exit > Apply Project
+Fonts**: actualiza únicamente las fuentes y conserva el resto de la escena.
 
 ## Tecnología
 

@@ -33,6 +33,7 @@ namespace BannoyasGames.CargoExit.Editor
 
             var root = new GameObject("Cargo Exit Prototype");
             var controller = root.AddComponent<CargoExitPrototypeController>();
+            CargoExitFontApplier.Configure(controller);
             controller.BuildScenePreview();
 
             EditorSceneManager.SaveScene(scene, ScenePath);
