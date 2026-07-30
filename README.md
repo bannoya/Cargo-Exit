@@ -25,6 +25,30 @@ Preproducción. El prototipo actual valida la clasificación de cajas desde una
 pila central hacia pallets periféricos. El próximo vertical slice conectará
 asignación de empleados, carga y despacho dentro de una jornada.
 
+## Abrir el prototipo
+
+1. Abrir el proyecto `game` con Unity 6.3 LTS.
+2. Usar el menú **Cargo Exit > Open Main Scene**.
+3. Abrir la pestaña **Game** y elegir una relación vertical `9:16`.
+4. La composición puede verse sin ejecutar; presionar **Play** para arrastrar.
+
+También se puede abrir directamente
+`Assets/CargoExit/Scenes/CargoExit.unity`. Es la única escena activa del
+proyecto.
+
+## Estructura
+
+- `Core`: reglas C# independientes de Unity.
+- `Presentation`: vista, entrada, animaciones y coordinación del prototipo.
+- `Editor`: herramientas para crear y abrir escenas; no entra al juego final.
+- `Tests/EditMode`: pruebas rápidas de reglas.
+- `Tests/PlayMode`: pruebas de la escena y la interacción.
+- `Scenes`: una sola escena vigente.
+- `Docs`: GDD, identidad y guía de trabajo.
+
+La dirección de dependencias es `Core <- Presentation <- Editor`. Core nunca
+conoce la interfaz ni las herramientas de Unity.
+
 ## Tecnología
 
 - Unity 6.3 LTS (`6000.3.20f1`)
@@ -35,3 +59,6 @@ asignación de empleados, carga y despacho dentro de una jornada.
 
 La visión, los sistemas y el alcance vigente están en
 [Docs/GAME_DESIGN.md](Docs/GAME_DESIGN.md).
+
+Las instrucciones para trabajar sin mezclar responsabilidades están en
+[Docs/PROJECT_GUIDE.md](Docs/PROJECT_GUIDE.md).

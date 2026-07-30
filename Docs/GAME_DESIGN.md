@@ -1204,6 +1204,21 @@ Durante pruebas observaremos:
 
 Las reglas importantes no deben depender de animaciones ni objetos de escena. Esto permite probarlas automáticamente.
 
+#### Dirección obligatoria de dependencias
+
+La separación es una regla del proyecto, no una sugerencia:
+
+1. **Core** usa C# puro y no conoce `UnityEngine`, escenas ni interfaz.
+2. **Presentation** puede depender de Core para mostrar y ejecutar sus reglas.
+3. **Editor** puede depender de Presentation para construir y abrir escenas, pero nunca forma parte del juego compilado.
+4. **Tests EditMode** comprueban Core sin levantar una escena.
+5. **Tests PlayMode** comprueban la integración visual y táctil.
+
+Core nunca depende de Presentation o Editor. La lógica de una jornada no se
+concentrará en un único controlador: reglas, flujo, vista, entrada y herramientas
+de autoría se mantendrán como responsabilidades distintas. Si aparece un error,
+debe ser posible determinar qué capa lo produce antes de modificar otra.
+
 ### 25.3 Datos
 
 Los contenidos variables se definirán mediante datos editables, no mediante condiciones dispersas en scripts:
@@ -1233,7 +1248,10 @@ Se requiere migración simple o reinicio seguro mientras el proyecto esté en de
 
 ### 25.5 Estado del proyecto
 
-La escena activa de prototipo es `WarehouseSortPrototype.unity`. Las escenas anteriores conservan experimentos de carga y gesto, pero no representan la visión vigente.
+La única escena activa es `Assets/CargoExit/Scenes/CargoExit.unity`. Contiene una
+vista previa visible desde el editor y se transforma en la versión interactiva
+al entrar en Play Mode. Los experimentos anteriores de cuadrícula y descarga
+fueron retirados después de cumplir su función de aprendizaje.
 
 Antes de generar una versión para dispositivo se debe instalar el módulo Android correspondiente a Unity. No se realizará ninguna publicación ni aceptación de términos sin confirmación.
 
