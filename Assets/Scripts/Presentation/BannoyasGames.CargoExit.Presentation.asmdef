@@ -1,0 +1,19 @@
+{
+  "name": "BannoyasGames.CargoExit.Presentation",
+  "rootNamespace": "BannoyasGames.CargoExit.Presentation",
+  "references": [
+    "BannoyasGames.CargoExit.Application",
+    "BannoyasGames.CargoExit.Core",
+    "Unity.ugui",
+    "Unity.TextMeshPro"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
