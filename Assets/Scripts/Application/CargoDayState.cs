@@ -1,10 +1,27 @@
 using System;
+using System.Collections.Generic;
 using BannoyasGames.CargoExit.Core;
 
 namespace BannoyasGames.CargoExit.Application
 {
     public sealed class CargoDayState
     {
+        private readonly List<string> destinationIds = new();
+
+        public string DayId { get; private set; }
+
+        public int TotalCargoCount { get; private set; }
+
+        public int HeavyCargoCount { get; private set; }
+
+        public int FragileCargoCount { get; private set; }
+
+        public IReadOnlyList<string> DestinationIds => destinationIds;
+
+        public string ObjectiveId { get; private set; }
+
+        public bool BriefingPrepared { get; private set; }
+
         public WorkStationType StrongEmployeeStation { get; private set; }
 
         public WorkStationType CarefulEmployeeStation { get; private set; }
@@ -24,6 +41,29 @@ namespace BannoyasGames.CargoExit.Application
         public CargoProcessingResult FragileCargoResult { get; private set; }
 
         public bool ProcessingCompleted { get; private set; }
+
+        public void PrepareBriefing(
+            string dayId,
+            int totalCargoCount,
+            int heavyCargoCount,
+            int fragileCargoCount,
+            IEnumerable<string> provisionalDestinationIds,
+            string objectiveId)
+        {
+            if (BriefingPrepared)
+            {
+                return;
+            }
+
+            DayId = dayId;
+            TotalCargoCount = totalCargoCount;
+            HeavyCargoCount = heavyCargoCount;
+            FragileCargoCount = fragileCargoCount;
+            destinationIds.Clear();
+            destinationIds.AddRange(provisionalDestinationIds);
+            ObjectiveId = objectiveId;
+            BriefingPrepared = true;
+        }
 
         public void ConfirmAssignment(
             WorkStationType strongEmployeeStation,
@@ -69,6 +109,13 @@ namespace BannoyasGames.CargoExit.Application
 
         public void Reset()
         {
+            DayId = null;
+            TotalCargoCount = 0;
+            HeavyCargoCount = 0;
+            FragileCargoCount = 0;
+            destinationIds.Clear();
+            ObjectiveId = null;
+            BriefingPrepared = false;
             StrongEmployeeStation = default;
             CarefulEmployeeStation = default;
             HeavyStationEmployeeId = null;
